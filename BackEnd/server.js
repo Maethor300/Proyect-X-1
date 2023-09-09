@@ -35,9 +35,9 @@ app.post('/agregarDatos', (req, res) => {
       res.status(500).json({ error: 'Error al realizar la consulta' });
     }
   });
-//   app.get('/miPagina', (req, res) => {
-//     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
-// });
+  app.get('/miPagina', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+});
   sequelize.sync()
   .then(() => {
     console.log('Base de datos sincronizada');
