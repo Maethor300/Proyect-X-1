@@ -41,7 +41,7 @@ function Formulario(){
       const handleSubmit = async(event) => {
         event.preventDefault();
         if(validarFormulario()){
-          fetch('https://proyect-x-1.onrender.com/', {
+          fetch('https://proyect-x-1.onrender.com', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
