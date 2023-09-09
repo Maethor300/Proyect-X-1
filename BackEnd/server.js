@@ -2,13 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database.js');
-const Formulario = require('./relacion.js')
+const Formulario = require('./relacion.js');
+const fs = require('fs');
 const path = require('path');
 const app = express();
 const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../build')));
+app.use(express.static(path.join(__dirname, './build')));
  
 
 app.post('/agregarDatos', (req, res) => {
@@ -39,7 +40,7 @@ app.post('/agregarDatos', (req, res) => {
     }
   });
   app.get('/miPagina', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    res.sendFile(path.join(__dirname, './build', 'index.html'));
   });
   sequelize.sync()
   .then(() => {
