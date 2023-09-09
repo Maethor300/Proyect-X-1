@@ -36,7 +36,7 @@ app.post('/agregarDatos', (req, res) => {
     }
   });
   app.get('/miPagina',(req,res)=>{
-     const content = ReactDOMServer.renderToString(<App/>)
+     const content = ReactDOMServer.renderToString(<App />)
      const html = `
      <html>
          <head>
