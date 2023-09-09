@@ -3,12 +3,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database.js');
 const Formulario = require('./relacion.js');
-const fs = require('fs');
-const path = require('path');
 const app = express();
 const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
+ 
+ 
+
 app.post('/agregarDatos', (req, res) => {
     const { id, nombre, email, telefono, opcion } = req.body;
     
@@ -36,7 +37,7 @@ app.post('/agregarDatos', (req, res) => {
       res.status(500).json({ error: 'Error al realizar la consulta' });
     }
   });
-   
+  
   sequelize.sync()
   .then(() => {
     console.log('Base de datos sincronizada');
