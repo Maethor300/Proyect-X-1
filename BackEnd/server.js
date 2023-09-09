@@ -2,14 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database.js');
-const Formulario = require('./relacion.js');
+const ReactDOMServer = require('react-dom/server')
+const App = require('../src/App.js')
 const app = express();
 const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
- 
- 
-
 app.post('/agregarDatos', (req, res) => {
     const { id, nombre, email, telefono, opcion } = req.body;
     
@@ -37,7 +35,22 @@ app.post('/agregarDatos', (req, res) => {
       res.status(500).json({ error: 'Error al realizar la consulta' });
     }
   });
-  
+  app.get('/miPagina',(req,res)=>{
+     const content = ReactDOMServer.renderToString(<App/>)
+     const html = `
+     <html>
+         <head>
+             <title>My SSR App</title>
+         </head>
+         <body>
+             <div id="root">${content}</div>
+             <script src="path-to-your-bundled-client-code.js"></script>
+         </body>
+     </html>
+ `;
+
+ res.send(html);
+  })
   sequelize.sync()
   .then(() => {
     console.log('Base de datos sincronizada');
