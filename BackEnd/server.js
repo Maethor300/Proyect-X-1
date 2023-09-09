@@ -3,13 +3,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database.js');
 const Formulario = require('./relacion.js')
+const build = require('../build')
 const app = express();
 const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
  
- 
-app.post('/', (req, res) => {
+app.use(express.static(path.join(__dirname, build)));
+
+app.post('/agregarDatos', (req, res) => {
     const { id, nombre, email, telefono, opcion } = req.body;
     
     Formulario.create({
@@ -27,6 +29,9 @@ app.post('/', (req, res) => {
       res.status(500).json({ error: err.message });
     });
   });
+  app.get("/miPagina", (req,res)=>{
+        res.sendFile(path.join(__dirname,build,'index.html'));
+  })
   app.get('/consulta', async (req, res) => {
     try{
       const resultados = await Formulario.findAll();

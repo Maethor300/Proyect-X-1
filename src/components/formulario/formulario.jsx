@@ -41,9 +41,8 @@ function Formulario(){
       const handleSubmit = async(event) => {
         event.preventDefault();
         if(validarFormulario()){
-          fetch('http://localhost:3001/agregarDatos', {
+          fetch('https://proyect-x-1.onrender.com', {
             method: 'POST',
-            
             headers: {
               'Content-Type': 'application/json',
               // Puedes agregar otros encabezados aquí si lo necesitas
