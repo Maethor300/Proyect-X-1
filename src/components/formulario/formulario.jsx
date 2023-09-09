@@ -10,13 +10,6 @@ function Formulario(){
         telefono: '',
         opcion:false
       };
-      const prueba = {
-        id: 12312,
-        nombre: 'David',
-        email: 'davidleo300@hotmail.com',
-        telefono: 3125322428,
-        opcion:false
-      };
     const [error, setError] = useState({})
     const[datos, setDatos] = useState(estadoInicial);
     const handleInputChange = (event) => {
