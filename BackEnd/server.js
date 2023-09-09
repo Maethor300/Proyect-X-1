@@ -4,7 +4,7 @@ const cors = require('cors');
 const sequelize = require('./database.js');
 const Formulario = require('./relacion.js')
 const app = express();
-const port = 10000;
+const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
  
