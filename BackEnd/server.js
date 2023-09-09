@@ -27,16 +27,14 @@ app.post('/', (req, res) => {
       res.status(500).json({ error: err.message });
     });
   });
-  app.get('/agregarDatos', (req, res) => {
-    Formulario.findAll()
-    .then(todosLosDatos => {
-      res.json(todosLosDatos);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ error: err.message });
-    });
-});
+  app.get('/consulta', async (req, res) => {
+    try{
+      const resultados = await Formulario.findAll();
+      res.json(resultados);
+    } catch(err){
+      res.status(500).json({ error: 'Error al realizar la consulta' });
+    }
+  });
   sequelize.sync()
   .then(() => {
     console.log('Base de datos sincronizada');
