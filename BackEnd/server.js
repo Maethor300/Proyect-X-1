@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
  
  
-app.post('/agregarDatos', (req, res) => {
+app.post('/', (req, res) => {
     const { id, nombre, email, telefono, opcion } = req.body;
     
     Formulario.create({
