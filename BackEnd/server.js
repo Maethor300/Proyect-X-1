@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database.js');
 const Formulario = require('./relacion.js')
- 
+const path = require('path');
 const app = express();
 const port = 3001;
 app.use(bodyParser.json());
@@ -38,7 +38,7 @@ app.post('/agregarDatos', (req, res) => {
       res.status(500).json({ error: 'Error al realizar la consulta' });
     }
   });
-  app.get('*', (req, res) => {
+  app.get('/miPagina', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
   sequelize.sync()
