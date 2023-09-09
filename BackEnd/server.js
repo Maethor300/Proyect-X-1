@@ -8,7 +8,7 @@ const app = express();
 const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
- 
+app.use(express.static(path.join(__dirname, '../build')));
  
 
 app.post('/agregarDatos', (req, res) => {
@@ -37,6 +37,9 @@ app.post('/agregarDatos', (req, res) => {
     } catch(err){
       res.status(500).json({ error: 'Error al realizar la consulta' });
     }
+  });
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
   });
   sequelize.sync()
   .then(() => {
