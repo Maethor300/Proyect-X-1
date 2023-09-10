@@ -2,12 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const sequelize = require('./database.js');
+const Formulario = require('./relacion.js')
 const app = express();
 const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
  
-app.post('/agregarDatos', (req, res) => {
+app.post('/newData', (req, res) => {
     const { id, nombre, email, telefono, opcion } = req.body;
     
     Formulario.create({

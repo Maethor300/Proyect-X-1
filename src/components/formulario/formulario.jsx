@@ -41,7 +41,7 @@ function Formulario(){
       const handleSubmit = async(event) => {
         event.preventDefault();
         if(validarFormulario()){
-          fetch('https://proyect-x-1.onrender.com/agregarDatos', {
+          fetch('https://proyect-x-1.onrender.com/newData', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
